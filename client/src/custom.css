@@ -1,0 +1,135 @@
+.input-div {
+  position: relative;
+  overflow: hidden;
+}
+.input-file {
+  position: absolute;
+  font-size: 50px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+.mm-input {
+  border-radius: 50px;
+  padding-left: 20px;
+  box-shadow: 0 0 2px 0px rgba(0,0,0,0.1);
+  /* background: #f2f2f2; */
+  color: #fff;
+  margin: 0px;
+  padding: 20px;
+}
+.s-input {
+  width: 32%;
+  float: left;
+  margin-right: 10px;
+}
+#colors_box .color-row {
+  margin: 10px 0px;
+  padding: 15px;
+  background: rgba(0,0,0,0.1);
+}
+
+#sizes_box .row {
+  padding-left: 50px;
+}
+#sizes_box .row .left {
+  width: 90%;
+  float: left;
+}
+#sizes_box .row .right {
+  width: 5%;
+  float: left;
+}
+.btn-cont {
+  padding-left: 50px;
+}
+body.modal-open .background-container {
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  -ms-filter: blur(1px);
+  filter: blur(1px);
+}
+.modal-dialog{
+  overflow-y: initial !important
+}
+
+.react-datepicker-wrapper{
+  width: 100%;
+}
+
+.react-bootstrap-table>table, td, th {  
+  border: 0px solid #ddd !important;
+  /* text-align: center !important */
+}
+
+.react-bootstrap-table>thead ,tr{  
+  border: 1px solid #ddd !important;
+  text-align: center !important
+}
+
+.signatureBox{
+  border: 1px solid #ced4da;
+}
+
+.signatureCanvas{
+  border: 1px solid black;
+  width: 100%;
+  min-height: 500px;
+}
+
+.form-group.required .control-label:after {
+  content:"*";
+  color:red;
+}
+
+
+.custom-file{
+  width: 70%;
+}
+
+.errorMsg{
+  background-color: #ffe0e4 !important;
+}
+
+.react-bootstrap-table table {
+  table-layout: auto;
+}
+
+.leaflink-btn{
+  float:right;
+}
+
+.clrBtn{
+  margin-left: 2rem;
+}
+.printReceipts{
+  margin-bottom: 5%;
+}
+.printReceiptSection .height-80vh{
+  height: 80vh;
+}
+/* MEDIA QUERY FOR MOBILES */
+@media screen and (max-width: 767px){
+  .leaflink-btn{
+    margin-top: 2%;
+    float: left;
+    width: 100%;
+  }
+  .card-header h4{
+    text-align: center;
+  }
+  .btn-success{
+    width: 100%;
+  }
+  .twobtn-grp{
+    display: flex;
+    justify-content: center;
+  }
+  .searchBtn{
+    margin-top: 10px;
+  }
+  .clrBtn{
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,68 @@
+.input-div {
+  position: relative;
+  overflow: hidden;
+}
+.input-file {
+  position: absolute;
+  font-size: 50px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+.mm-input {
+  border-radius: 50px;
+  padding-left: 20px;
+  box-shadow: 0 0 2px 0px rgba(0,0,0,0.1);
+  /* background: #f2f2f2; */
+  color: #fff;
+  margin: 0px;
+  padding: 20px;
+}
+.s-input {
+  width: 32%;
+  float: left;
+  margin-right: 10px;
+}
+#colors_box .color-row {
+  margin: 10px 0px;
+  padding: 15px;
+  background: rgba(0,0,0,0.1);
+}
+
+#sizes_box .row {
+  padding-left: 50px;
+}
+#sizes_box .row .left {
+  width: 90%;
+  float: left;
+}
+#sizes_box .row .right {
+  width: 5%;
+  float: left;
+}
+.btn-cont {
+  padding-left: 50px;
+}
+.table-light th, .table-light td, .table-light thead th, .table-light tbody + tbody {
+  border-color: #424242}
+
+
+.hovered:hover {
+  cursor: pointer;
+  color: white !important; 
+  background: lightslategray;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+.modal-footer {
+ 
+  justify-content: space-evenly !important
+}
+
+.pass:hover{
+  text-decoration: underline;
+}
+
+.hoveredheader:hover{
+  cursor: pointer;
+}

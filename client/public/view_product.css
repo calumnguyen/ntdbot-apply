@@ -1,0 +1,161 @@
+.tb_row {
+    background: #f2f2f2;
+    border: 1px solid #ccc;
+    margin: 5px; padding: 15px;
+  }
+  .tb_top .tb_t_left {
+    display: inline-block;
+    float: left;
+    width: 15%;
+  }
+  .tb_top .tb_t_left img {
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+  }
+  .tb_top .tb_t_right {
+    display: inline-block;
+    float: left;
+    width: 80%;
+    padding-top: 25px;
+  }
+  .tb_top p {
+    display: inline-block;
+    width: 80%;
+  }
+  .clearfix {
+    clear: both;
+  }
+  .tb_color_box {
+    padding: 15px;
+  }
+  .tb_color_box p {
+    display: inline-block;
+    font-size: 20px;
+    /* font-weight: bold; */
+  }
+  .tb_arrow-btn {
+    display: inline-block;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    padding: 2px; margin: 2px;
+    background: #333;
+    font-size: 11px;
+    color: #fff;
+    border: none;
+
+  }
+  .tb_size_box {
+    margin-left: 50px;
+  }
+  .tb_barcodes_box {
+    margin-left: 30px;
+  }
+  .tb_barcodes_box ul {
+    list-style: none;
+  }
+  .ttag {
+    display: inline-block;
+    padding: 5px;
+    color: #fff;
+    background: #3F94E6;
+    margin: 5px;
+  }
+  .mbtn {
+    margin: 5px;
+  }
+  .hide_it {
+    display: none;
+  }
+  .show_it {
+    display: block;
+  }
+  .imeg_container {
+    width: 100%;
+    height: 250px;
+    background-color: #C5E0E8;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position:  center;
+    position: relative;
+  }
+
+.product_card {
+  height: '452.078px';
+  clear: both;
+}
+.product_card .textbbody {
+  padding: 15px;
+  padding-top: 35px;
+}
+.product_card .badge {
+  margin: 2px;
+}
+.imeg_container .bdg {
+  position: absolute;
+  top: 95%; left: 80%;
+  color: #fff !important;
+}
+.product_card .eicon {
+  font-size: 10px;
+}
+.product_card a {
+  color: #000 !important;
+}
+.s1 {
+  color:#000; text-decoration:none;
+}
+
+
+/* View Details css */
+.tree li {
+    list-style-type:none;
+    margin:0;
+    padding:10px 5px 0 5px;
+    position:relative
+}
+.tree li::before,
+.tree li::after {
+    content:'';
+    left:-20px;
+    position:absolute;
+    right:auto
+}
+.tree li::before {
+    border-left:2px solid #000;
+    bottom:50px;
+    height:100%;
+    top:0;
+    width:1px
+}
+.tree li::after {
+    border-top:2px solid #000;
+    height:20px;
+    top:25px;
+    width:25px
+}
+.tree li span {
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border:2px solid #000;
+    border-radius:3px;
+    display:inline-block;
+    padding:3px 8px;
+    text-decoration:none;
+    cursor:pointer;
+}
+.tree>ul>li::before,
+.tree>ul>li::after {
+    border:0
+}
+.tree li:last-child::before {
+    height:27px
+}
+
+[aria-expanded="false"] > .expanded,
+[aria-expanded="true"] > .collapsed {
+  display: none;
+}
+
+/* View Details css */
