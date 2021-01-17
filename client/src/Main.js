@@ -13,9 +13,6 @@ import PrivateRoute from './routing/PrivateRoute';
 import AddUser from './components/pages/users/Adduser';
 import View from './components/pages/users/view';
 import ViewUser from './components/pages/users/Viewuser';
-import AddCustomer from './components/pages/customers/Addcustomer';
-import ViewCustomer from './components/pages/customers/Viewcustomer';
-
 import ActivateAccount from './components/pages/ActivateAccount';
 import Error from './components/pages/Error';
 import './custom.css';
@@ -30,13 +27,7 @@ import ConfigureSystemUser from './components/pages/users/ConfigureSystemUser';
 import EditUser from './components/pages/users/EditUser';
 // import SalaryUpdate from './components/pages/users/SalaryUpdate'
 import StoreClosed from './components/pages/StoreClosed';
-import ViewOrders from './components/pages/orders/ViewOrders';
-import PayOrders from './components/pages/orders/PayOrders';
-import ShowReceipts from './components/pages/receipts/ShowReceipts';
-import ViewReceipt from './components/pages/receipts/ViewReceipt';
 
-import ViewConfirmation from './components/pages/orders/ViewConfirmation';
-import PrintReceipts from './components/pages/receipts/PrintReceipts';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -78,26 +69,6 @@ const Main = () => {
             path='/ActivateAccount'
             component={ActivateAccount}
           />
-
-          {/* customers */}
-          <PrivateRoute
-            exact
-            path='/customer/addcustomer'
-            component={AddCustomer}
-          />
-          <PrivateRoute exact path='/customer' component={ViewCustomer} />
-          <PrivateRoute
-            exact
-            path='/customer/editcustomer/:id'
-            component={AddCustomer}
-          />
-          <PrivateRoute exact path='/orders' component={ViewOrders} />
-          <PrivateRoute exact path='/orders/pay' component={PayOrders} />
-          <PrivateRoute exact path='/orders/pay/confirmation' component={ViewConfirmation} />
-          
-          <PrivateRoute exact path='/receipts/' component={ShowReceipts} />
-          <PrivateRoute exact path='/receipts/view/:id' component={ViewReceipt} />
-          <PrivateRoute exact path='/receipts/printreceipts' component={PrintReceipts} />
           <PrivateRoute exact path='/Error' component={Error} />
         </Switch>
       </Router>

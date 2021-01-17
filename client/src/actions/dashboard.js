@@ -1,12 +1,8 @@
 import axios from "axios";
 import {
-   
     DASHBOARD_LOADING,
     DASHBOARD_LOADED,
     DASHBOARD_ERROR,
-    SHOP_LOADING,
-    SHOP_LOADED,
-    SHOP_ERROR,
 } from "./types";
 import { setAlert } from "./alert";
 
@@ -34,29 +30,5 @@ export const changeShopStatus = (status) => async (dispatch) => {
         type: DASHBOARD_ERROR,
       });
       
-    }
-  };
-
-  // getShop
-export const getShop = () => async (dispatch) => {
-    dispatch({ type: SHOP_LOADING });
-    
-    try {
-      const res = await axios.get(`/api/dashboard/shops/`);
-        
-      dispatch({
-        type: SHOP_LOADED,
-        payload: res.data,
-      });
-      // dispatch(setAlert(res.data.msg, "success"));
-  
-    } catch (err) {
-      const errors = err.response.data.errors;
-      if (errors) {
-        errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
-      }
-      dispatch({
-        type: SHOP_ERROR,
-      });
     }
   };

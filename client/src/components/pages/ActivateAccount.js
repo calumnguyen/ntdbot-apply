@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Alert from "../layout/Alert";
-import { getShop } from "../../actions/dashboard";
 import Loader from "../layout/Loader";
 import { updatePassword, getUser } from "../../actions/user";
 import { logout } from "../../actions/auth";

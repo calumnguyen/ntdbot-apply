@@ -77,37 +77,6 @@ class Sidebar extends Component {
               ) : (
                 ''
               )}
-
-              {user &&
-              user.systemRole === 'Employee' &&
-              user.sections.includes('Orders') ? (
-                <li className={this.getClassName('orders')}>
-                  <Link to='/orders' onClick={() => this.handleClick('orders')}>
-                    <i className='ft-shopping-cart' /> Orders
-                  </Link>
-                </li>
-              ) : user && user.systemRole === 'Admin' ? (
-                <li className={this.getClassName('orders')}>
-                  <Link to='/orders' onClick={() => this.handleClick('orders')}>
-                    <i className='ft-shopping-cart' /> Orders
-                  </Link>
-                </li>
-              ) : (
-                ''
-              )}
-
-              {user && user.systemRole === 'Admin' ? (
-                <li className={this.getClassName('receipts')}>
-                  <Link
-                    to='/receipts'
-                    onClick={() => this.handleClick('receipts')}
-                  >
-                    <i className='ft-book' /> Receipts
-                  </Link>
-                </li>
-              ) : (
-                ''
-              )}
             </ul>
           </div>
         </div>

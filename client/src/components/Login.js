@@ -6,7 +6,6 @@ import { login, loadUser } from '../actions/auth';
 import { updatePassword, getUser } from '../actions/user';
 import { withRouter } from 'react-router-dom';
 import Alert from './layout/Alert';
-import { getShop } from '../actions/dashboard';
 import { OCAlertsProvider } from '@opuscapita/react-alerts';
 import { OCAlert } from '@opuscapita/react-alerts';
 class Login extends Component {
@@ -22,7 +21,6 @@ class Login extends Component {
   };
 
   async componentDidMount() {
-    this.props.getShop();
     //await this.props.getUser(userID)
   }
   async componentDidUpdate(prevProps, prevState) {
@@ -331,7 +329,6 @@ Login.propTypes = {
   user: PropTypes.object,
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
-  getShop: PropTypes.func.isRequired,
   updatePassword: PropTypes.func.isRequired,
   getUser: PropTypes.func.isRequired,
   loadUser: PropTypes.func.isRequired,
@@ -353,6 +350,5 @@ export default withRouter(
     loadUser,
     updatePassword,
     getUser,
-    getShop,
   })(Login)
 );

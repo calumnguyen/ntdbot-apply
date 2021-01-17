@@ -48,7 +48,6 @@ var upload = multer({ storage: storage, fileFilter: imageFilter });
 router.post(
   '/add',
   upload.single('avatar'),
-  auth,
   // isAdmin,
   [
     check('username', 'User Name is Required').not().isEmpty(),

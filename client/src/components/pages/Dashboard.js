@@ -4,7 +4,6 @@ import Header from '../layout/Header';
 import Loader from '../layout/Loader';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import { changeShopStatus, getShop } from '../../actions/dashboard';
 import * as moment from 'moment';
 import '../../login.css';
 import '../../dashbaord.css';
@@ -166,16 +165,11 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   changeShopStatus: PropTypes.func.isRequired,
-  getShop: PropTypes.func.isRequired,
   auth: PropTypes.object,
-
-  shop: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
   users: state.user.users,
   auth: state.auth,
-
-  shop: state.dashboard.shop,
 });
 export default connect(mapStateToProps, {})(Dashboard);
