@@ -1,7 +1,7 @@
 {
-  "name": "ntk",
+  "name": "ntdbot-apply",
   "version": "1.0.0",
-  "description": "",
+  "description": "Recruitment Site for ntdbot.app",
   "main": "server.js",
   "scripts": {
     "build": "cd client && npm run build",
