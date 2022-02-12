@@ -27,6 +27,7 @@ import ConfigureSystemUser from './components/pages/users/ConfigureSystemUser';
 import EditUser from './components/pages/users/EditUser';
 // import SalaryUpdate from './components/pages/users/SalaryUpdate'
 import StoreClosed from './components/pages/StoreClosed';
+import Welcome from './components/Welcome';
 
 
 if (localStorage.token) {
@@ -41,7 +42,7 @@ const Main = () => {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route exact path='/' component={Login} />
+          <Route exact path='/' component={Welcome} />
           <Route exact path='/Login' component={Login} />
 
           {/* Dashboard */}
