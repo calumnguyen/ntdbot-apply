@@ -353,10 +353,9 @@
 		position: absolute;
     	left: 40px;
 		&.mainImage{
-			left: 0;
+			left: 2px;
 			position: relative;
-			margin-left: -5px;
-			top: -5px;
+			top: -9px;
 		}
 	}
 }
@@ -364,16 +363,10 @@
 .chatApp__convMessageItem.chatApp__convMessageItem--right{
 	.chatUserImage .isAvailable_yellow{
 		color: var(--theme-yellow);
-		margin-top: -5px;
+		margin-top: -2px;
 		font-size: 13px;
-		right: -5px;
+		right: -2px;
 		text-align: right;
-		&.mainImage{
-			left: 0;
-			position: relative;
-			margin-left: -5px;
-			top: -5px;
-		}
 	}
 }
 .option_btn_div{
