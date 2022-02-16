@@ -18,13 +18,23 @@ class ChatRoom extends React.Component {
 			id: this.state.messages.length + 1,
 			sender: sender,
 			senderAvatar: senderAvatar,
-			message: "Yes"
+			message: "Yes",
+			time: new Date(),
 		};
 		let messageReply = {
 			id: this.state.messages.length + 1,
 			sender: this.state.initial_messages[0].sender,
 			senderAvatar: this.state.initial_messages[0].senderAvatar,
-			message: "I'm working on next steps, see you tomorrow"
+			time: new Date(),
+			requireInput: true,
+			message: "Welcome back! May I have your application number? It should be a 6-digit number!",
+			options: [
+				{
+					display_name: "Start a new application",
+					slug: "start_new_applicationbtn",
+					action: () => alert("Start New Application")
+				}
+			],
 		};
 		this.setNewUserMessage(newMessageItem);
 		setTimeout(() => this.setNewRecruiterMessage(messageReply),2000);
@@ -161,8 +171,9 @@ class ChatRoom extends React.Component {
 				senderAvatar: senderAvatar,
 				message: messageFormat,
 				time: new Date(),
+				requireInput:false
 			};
-			this.setState({ messages: [...this.state.messages, newMessageItem] });
+			this.setNewUserMessage(newMessageItem)
 			this.resetTyping(sender);
 		}, 400);
 	}

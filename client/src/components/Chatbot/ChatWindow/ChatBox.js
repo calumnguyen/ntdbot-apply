@@ -58,7 +58,7 @@ class InputMessage extends React.Component {
           type="text"
           ref={(message) => (this.messageInput = message)}
           className={"chatApp__convInput"}
-          placeholder="Text message"
+          placeholder="Your answer"
           onKeyDown={this.handleTyping}
           onKeyUp={this.handleTyping}
           tabIndex="0"
