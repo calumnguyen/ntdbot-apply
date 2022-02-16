@@ -1,0 +1,36 @@
+.Header {
+    position: relative;
+  .title {
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    justify-content: center;
+    font-size: 70px;
+    text-align: center;
+    font-weight: bolder;
+  }
+  .primary_title{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+  }
+  .secondary_title{
+    position: absolute;
+    bottom: -10px;
+    font-size: 13px;
+    left: 8px;
+  }
+  .title_tagline{
+    color: var(--theme-yellow);
+    font-size: 20px;
+  }
+  .outer {
+    width: 3px;
+    height: 50px;
+    position: relative;
+    margin-left: 15px;
+    margin-right: 10px;
+    overflow: hidden;
+    background-color: var(--theme-black);
+  }
+}

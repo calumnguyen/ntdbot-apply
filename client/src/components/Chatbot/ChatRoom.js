@@ -1,5 +1,7 @@
 import React from "react";
 import './ChatRoom.scss'
+import ChatTitle from './ChatTitle';
+import ImageBox from './ImageBox';
 
 function detectURL(message) {
 	var urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
@@ -7,18 +9,7 @@ function detectURL(message) {
 		return '<a href="' + urlMatch + '">' + urlMatch + '</a>';
 	})
 }
-class Title extends React.Component {
-	constructor(props, context) {
-		super(props, context);
-	}
-	render() {
-		return (
-			<div className={"chatApp__convTitle"}>{this.props.owner}'s display</div>
-		);
-	}
-}
-/* end Title component */
-/* ========== */
+
 
 /* ========== */
 /* InputMessage component - used to type the message */
@@ -50,7 +41,7 @@ class InputMessage extends React.Component {
 	render() {
 		/* If the chatbox state is loading, loading class for display */
 		var loadingClass = this.props.isLoading ? 'chatApp__convButton--loading' : '';
-		let sendButtonIcon = <i className={"material-icons"}>send</i>;
+		let sendButtonIcon = <i class="fa fa-paper-plane" aria-hidden="true"/>;
 		return (
 			<form onSubmit={this.handleSendMessage}>
 				<input
@@ -124,10 +115,14 @@ class MessageList extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 	}
+	componentDidUpdate(){
+		let objDiv = document.getElementById("chatApp__convTimeline");
+		objDiv.scrollTop = objDiv.scrollHeight;
+	}
 	render() {
 		return (
-			<div className={"chatApp__convTimeline"}>
-			{this.props.messages.slice(0).reverse().map(
+			<div className={"chatApp__convTimeline"} id={"chatApp__convTimeline"}>
+			{this.props.messages.slice(0).map(
 				messageItem => (
 					<MessageItem
 						key={messageItem.id}
@@ -153,7 +148,7 @@ class MessageItem extends React.Component {
 		let messagePosition = (( this.props.owner == this.props.sender ) ? 'chatApp__convMessageItem--right' : 'chatApp__convMessageItem--left');
 		return (
 			<div className={"chatApp__convMessageItem " + messagePosition + " clearfix"}>
-				<img src={this.props.senderAvatar} alt={this.props.sender} className="chatApp__convMessageAvatar" />
+				<ImageBox src={this.props.senderAvatar} alt={this.props.sender} isAvailable={true}/>
 				<div className="chatApp__convMessageValue" dangerouslySetInnerHTML={{__html: this.props.message}}></div>
 			</div>
 		);
@@ -184,9 +179,9 @@ class ChatBox extends React.Component {
 	render() {
 		return (
 			<div className={"chatApp__conv"}>
-				<Title
+				{/* <ChatTitle
 					owner={this.props.owner}
-				/>
+				/> */}
 				<MessageList
 					owner={this.props.owner}
 					messages={this.props.messages}
@@ -219,36 +214,19 @@ class ChatRoom extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
-			messages: [{
-				id: 1,
-				sender: 'Shun',
-				senderAvatar: 'https://i.pravatar.cc/150?img=32',
-				message: 'Hello 👋'
-			},
-			{
-				id: 2,
-				sender: 'Gabe',
-				senderAvatar: 'https://i.pravatar.cc/150?img=56',
-				message: 'Hey!'
-			},
-			{
-				id: 3,
-				sender: 'Gabe',
-				senderAvatar: 'https://i.pravatar.cc/150?img=56',
-				message: 'How are you?'
-			},
-			{
-				id: 4,
-				sender: 'Shun',
-				senderAvatar: 'https://i.pravatar.cc/150?img=32',
-				message: 'Great! It\'s been a while... 🙃'
-			},
-			{
-				id: 5,
-				sender: 'Gabe',
-				senderAvatar: 'https://i.pravatar.cc/150?img=56',
-				message: 'Indeed.... We\'re gonna have to fix that. 🌮🍻'
-			}
+			messages: [
+				{
+					id: 1,
+					sender: 'Recruiter',
+					senderAvatar: 'https://i.pravatar.cc/150?img=56',
+					message: 'Hello there, my name is Huy - a volunteer recruiter for Người Thông Dịch. Thank you for expressing interest in being a part of The Interpreter team!'
+				},
+				{
+					id: 2,
+					sender: 'Recruiter',
+					senderAvatar: 'https://i.pravatar.cc/150?img=56',
+					message: 'To get started, are you trying to resume an application that you have started within the past 30 days?'
+				}
 			],
 			isTyping: [],
 		};
@@ -284,6 +262,9 @@ class ChatRoom extends React.Component {
 		stateTyping[writer] = false;
 		this.setState({ isTyping: stateTyping });
 	}
+	componentDidMount(){
+		
+	}
 	render() {
 		let users = {};
 		let chatBoxes = [];
@@ -294,8 +275,7 @@ class ChatRoom extends React.Component {
 		let resetTyping = this.resetTyping;
 
 		/* user details - can add as many users as desired */
-		users[0] = { name: 'Shun', avatar: 'https://i.pravatar.cc/150?img=32' };
-		users[1] = { name: 'Gabe', avatar: 'https://i.pravatar.cc/150?img=56' };
+		users[0] = { name: 'NtdBot', avatar: 'https://i.pravatar.cc/150?img=32' };
 		
 		
 		/* creation of a chatbox for each user present in the chatroom */

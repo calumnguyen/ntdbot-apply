@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Chatbot from '../Chatbot';
+import Footer from '../Footer';
 import Header from '../Header';
 
 class Welcome extends Component {
@@ -20,6 +21,7 @@ class Welcome extends Component {
       <section className="welcome">
           <Header/>
           <Chatbot/>
+          <Footer/>
       </section>
     );
   }

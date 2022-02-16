@@ -1,0 +1,11 @@
+.chatbox{
+    text-align: center;
+    border: 5px solid var(--theme-yellow);
+    margin: 0 15rem;
+    border-radius: 20px 20px 0 20px;
+    padding: 30px 20px;
+    .helping_text{
+        color: var(--theme-yellow);
+        font-size: 15px;
+    }
+}
