@@ -107,13 +107,34 @@ class TypingIndicator extends React.Component {
 /* ========== */
 /* MessageList component - contains all messages */
 class MessageList extends React.Component {
-  constructor(props, context) {
+  constructor(props) {
     super(props);
+    this.state = {
+      recruiterIsTyping: true,
+    };
   }
+  toggleRecruiterTypingStatus = () => {
+    this.setState({ recruiterIsTyping: !this.state.recruiterIsTyping });
+  };
   componentDidUpdate() {
     let objDiv = document.getElementById("chatApp__convTimeline");
     objDiv.scrollTop = objDiv.scrollHeight;
+    setTimeout(this.toggleRecruiterTypingStatus, 4000);
   }
+  getTypingLoader = () => {
+    if (this.state.recruiterIsTyping) {
+      return (
+        <div className="custom_typing_indicator">
+          <div className="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      );
+    }
+    return null;
+  };
   render() {
     return (
       <div className={"chatApp__convTimeline"} id={"chatApp__convTimeline"}>
@@ -126,6 +147,7 @@ class MessageList extends React.Component {
             senderAvatar={messageItem.senderAvatar}
             message={messageItem.message}
             options={messageItem.options}
+            addNewInitialMessage = {this.props.addNewInitialMessage}
           />
         ))}
       </div>
@@ -138,21 +160,43 @@ class MessageList extends React.Component {
 /* ========== */
 /* MessageItem component - composed of a message and the sender's avatar */
 class MessageItem extends React.Component {
-constructor(props){
+  constructor(props) {
     super(props);
-}
+    this.state = {
+      recruiterIsTyping: true,
+    };
+  }
+  toggleRecruiterTypingStatus = () => {
+    this.setState({ recruiterIsTyping: !this.state.recruiterIsTyping });
+  };
+  getMessageForRecruiter = (message) => {
+    if (this.state.recruiterIsTyping) {
+      setTimeout(this.toggleRecruiterTypingStatus, 2000);
+      return (
+        <div className="custom_typing_indicator">
+          <div className="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      );
+    } else{
+      return (
+        <div
+          className="chatApp__convMessageValue"
+          dangerouslySetInnerHTML={{ __html: this.props.message }}
+        />
+      );  
+    }
+  };
   getOptionsBtn = () => {
     let optionsBtn = [];
     this.props.options.forEach((item, idx) => {
       optionsBtn.push(
         <button
           className="btn btn-primary option_btn"
-          onClick={() =>
-            item.action(
-              this.props.owner,
-              this.props.ownerAvatar
-            )
-          }
+          onClick={() => item.action(this.props.owner, this.props.ownerAvatar)}
         >
           {item.display_name}
         </button>
@@ -175,7 +219,7 @@ constructor(props){
             className="chatApp__convMessageValue"
             dangerouslySetInnerHTML={{ __html: this.props.message }}
           ></div>
-          {/* Show optionsa also here */}
+          {/* Show options also here */}
           <div className="option_btn_div">{this.getOptionsBtn()}</div>
         </div>
       );
@@ -194,10 +238,14 @@ constructor(props){
             alt={this.props.sender}
             isAvailable={true}
           />
-          <div
-            className="chatApp__convMessageValue"
-            dangerouslySetInnerHTML={{ __html: this.props.message }}
-          ></div>
+          {this.props.sender === "Recruiter" ? (
+            this.getMessageForRecruiter(this.props.message)
+          ) : (
+            <div
+              className="chatApp__convMessageValue"
+              dangerouslySetInnerHTML={{ __html: this.props.message }}
+            ></div>
+          )}
         </>
       );
     }
@@ -242,8 +290,12 @@ class ChatBox extends React.Component {
   render() {
     return (
       <div className={"chatApp__conv"}>
-        <MessageList owner={this.props.owner} messages={this.props.messages}
-            ownerAvatar={this.props.ownerAvatar}/>
+        <MessageList
+          owner={this.props.owner}
+          messages={this.props.messages}
+          ownerAvatar={this.props.ownerAvatar}
+          addNewInitialMessage = {this.props.addNewInitialMessage}
+        />
         <div className={"chatApp__convSendMessage clearfix"}>
           <TypingIndicator
             owner={this.props.owner}

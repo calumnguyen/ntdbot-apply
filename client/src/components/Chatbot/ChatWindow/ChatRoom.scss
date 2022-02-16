@@ -75,7 +75,7 @@
 	bottom: -16px;
 }
 .chatApp__convTimeline {
-	height: 400px;
+	height: 250px;
 	padding: 1rem;
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
@@ -393,4 +393,40 @@
 		background: var(--theme-yellow);
 		border-color: var(--theme-yellow);
 	}
+}
+
+.custom_typing_indicator{
+	margin-left: 40px;
+	.typing-indicator {
+		width: auto;
+		 padding: 20px;
+	  
+		span {
+		  height: 15px;
+		  width: 15px;
+		  float: left;
+		  margin: 0 1px;
+		  background-color: var(--theme-yellow);
+		  display: block;
+		  border-radius: 50%;
+		  opacity: 0.4;
+		  @for $i from 1 through 3 {
+			&:nth-of-type(#{$i}) {
+			  animation: 1s blink infinite ($i * .3333s);
+			}
+		  }
+		}
+	  }
+	  
+	  @keyframes blink {
+		50% {
+		  opacity: 1;
+		}
+	  }
+	  
+	  @keyframes bulge {
+		50% {
+		  transform: scale(1.05);
+		}
+	  }
 }

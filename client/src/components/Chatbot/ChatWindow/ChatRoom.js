@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './ChatRoom.scss'
 import ChatBox from "./ChatBox";
 
@@ -22,6 +22,9 @@ class ChatRoom extends React.Component {
 		};
 		let messages = [...this.state.messages]
 		messages.pop()
+		this.typing("Something");
+		//this.resetTyping(this.ownerInput.value);
+
 		this.setState({ messages: [...messages, newMessageItem] });
 		this.resetTyping(sender);
 	}
@@ -38,11 +41,27 @@ class ChatRoom extends React.Component {
 		this.setState({ messages: [...messages, newMessageItem] });
 		this.resetTyping(sender);
 	}
-
+	componentDidMount(){
+		if (this.state.current_initial_message<this.state.intitial_messages.length){
+			let initial_messages = [...this.state.intitial_messages]
+			let messages = [...this.state.messages]
+			messages.push(initial_messages[this.state.current_initial_message]);
+			this.setState({ messages: [...messages], current_initial_message:this.state.current_initial_message+1 });
+		}
+	}
+	addNewInitialMessage = () => {
+		if (this.state.current_initial_message<this.state.intitial_messages.length){
+			let initial_messages = [...this.state.intitial_messages]
+			let messages = [...this.state.messages]
+			messages.push(initial_messages[this.state.current_initial_message]);
+			this.setState({ messages: [...messages], current_initial_message:this.state.current_initial_message+1 });
+		}
+	}
 	constructor(props, context) {
 		super(props);
 		this.state = {
-			messages: [
+			current_initial_message: 0,
+			intitial_messages: [
 				{
 					id: 1,
 					sender: 'Recruiter',
@@ -77,6 +96,7 @@ class ChatRoom extends React.Component {
 					]
 				},
 			],
+			messages: [],
 			isTyping: [],
 		};
 		this.sendMessage = this.sendMessage.bind(this);
@@ -136,6 +156,7 @@ class ChatRoom extends React.Component {
                 resetTyping={resetTyping}
                 messages={messages}
                 isTyping={isTyping}
+				addNewInitialMessage = {this.addNewInitialMessage}
             />
         );
 		return (
