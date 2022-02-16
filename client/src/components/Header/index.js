@@ -11,7 +11,10 @@ function Header() {
         </p>
         <div className="outer">
         </div>
-        <span className="title_tagline">The Intepreter</span>
+        <div className="title_tagline">
+          <span>The</span>
+          <span>Interpreter</span>
+        </div>
       </p>
             
     </div>
