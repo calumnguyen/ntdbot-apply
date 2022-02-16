@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import './ChatRoom.scss'
 import ChatBox from "./ChatBox";
 
@@ -22,7 +22,7 @@ class ChatRoom extends React.Component {
 		};
 		let messages = [...this.state.messages]
 		messages.pop()
-		this.typing("Something");
+		//this.typing("Something");
 		//this.resetTyping(this.ownerInput.value);
 
 		this.setState({ messages: [...messages, newMessageItem] });
@@ -141,7 +141,7 @@ class ChatRoom extends React.Component {
 		let resetTyping = this.resetTyping;
 
 		/* user details - can add as many users as desired */
-		users[0] = { name: 'NtdBot', avatar: 'https://i.pravatar.cc/150?img=32' };
+		users[0] = { name: 'User', avatar: 'https://i.pravatar.cc/150?img=32' };
 		
 		
 		/* creation of a chatbox for each user present in the chatroom */

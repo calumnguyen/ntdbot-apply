@@ -119,7 +119,6 @@ class MessageList extends React.Component {
   componentDidUpdate() {
     let objDiv = document.getElementById("chatApp__convTimeline");
     objDiv.scrollTop = objDiv.scrollHeight;
-    setTimeout(this.toggleRecruiterTypingStatus, 4000);
   }
   getTypingLoader = () => {
     if (this.state.recruiterIsTyping) {
