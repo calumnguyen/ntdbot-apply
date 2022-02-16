@@ -2,3 +2,13 @@ html,body{
     margin: 0;
     font-family: 'Montserrat';
 }
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle{
+    border: var(--theme-yellow);
+    background-color: var(--theme-yellow);
+    outline: none;
+}
+
+.btn-primary.focus, .btn-primary:focus{
+    box-shadow: 0 0 0 0.2rem var(--theme-yellow);
+}

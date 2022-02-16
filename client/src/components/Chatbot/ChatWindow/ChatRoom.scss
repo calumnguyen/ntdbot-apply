@@ -376,3 +376,21 @@
 		}
 	}
 }
+.option_btn_div{
+	float: left;
+    margin-left: 45px;
+}
+.option_btn{
+	background: var(--theme-yellow);
+	border-color: var(--theme-yellow);
+	margin-left: 10px;
+	&:hover{
+		background: var(--theme-yellow);
+		color: var(--theme-black);
+		border-color: var(--theme-yellow);
+	}
+	&:active{
+		background: var(--theme-yellow);
+		border-color: var(--theme-yellow);
+	}
+}

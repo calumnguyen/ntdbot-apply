@@ -1,8 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { DateFormatWithName } from "../../utils/constants";
-import ChatRoom from "./ChatRoom";
-import ImageBox from "./ImageBox";
+import ChatRoom from "./ChatWindow/ChatRoom";
 
 import "./Chatbox.scss";
 
