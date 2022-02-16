@@ -1,5 +1,8 @@
-How to configure the database for testing:
-// For this you will need 2 terminal windows.
+# NTDBOT Recruitment Site
+
+## How to configure the database for testing?
+
+For this you will need 2 terminal windows.
 
 	a. First terminal:
 		1. CD into /ntdbot-apply

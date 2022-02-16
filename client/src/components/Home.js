@@ -6,20 +6,17 @@ class Welcome extends Component {
   };
 
   async componentDidMount() {
-    //await this.props.getUser(userID)
   }
   async componentDidUpdate(prevProps, prevState) {
-    
   }
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
-
     return (
       <section className="welcome">
-          <div className="jumbotron text-center font-weight-bolder bg-primary">Site is in construction</div>
+          <b className="text-center">Site is in construction</b>
       </section>
     );
   }
