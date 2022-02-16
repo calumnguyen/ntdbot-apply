@@ -13,9 +13,6 @@ app.use(express.json({ extended: false }));
 app.use(express.static(path.join(__dirname, '/public')));
 
 // Routes
-app.use('/api/dashboard', require('./routes/api/dashboard'));
-app.use('/api/users', require('./routes/api/user'));
-app.use('/api/auth', require('./routes/api/auth'));
 
 if (process.env.NODE_ENV === 'development') {
   app.use(express.static('client/build'));

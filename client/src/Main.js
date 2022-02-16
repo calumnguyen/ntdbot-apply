@@ -4,15 +4,14 @@ import {
   BrowserRouter as Router,
   Switch,
 } from 'react-router-dom';
-
 import Error from './components/pages/Error';
-import './custom.css';
+import './index.css';
 
 // Redux
 import { Provider } from 'react-redux';
 import store from './store';
 
-import Welcome from './components/Home';
+import Home from './components/pages/Home';
 
 
 const Main = () => {
@@ -20,7 +19,7 @@ const Main = () => {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route exact path='/' component={Welcome} />
+          <Route exact path='/' component={Home} />
           <Route exact path='/Error' component={Error} />
         </Switch>
       </Router>

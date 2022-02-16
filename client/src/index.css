@@ -1,0 +1,49 @@
+@charset "UTF-8";
+/* Import custom fonts here */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/Montserrat/Montserrat-Regular.ttf');
+}
+@import url('./assets/css/bootstrap4.3.min.css');
+@import url('./assets/fonts/font-awesome/css/font-awesome.min.css');
+@import url('./global.css');
+
+
+
+/* set default colors here */
+:root {
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --primary: #009DA0;
+  --secondary: #868e96;
+  --success: #0CC27E;
+  --info: #1CBCD8;
+  --warning: #FF8D60;
+  --danger: #FF586B;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: "Montserrat", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; 
+  --theme-orange: #EB5E0B;
+  --theme-black: #0D0C0C;
+  --theme-white: #A3D2CA;
+  --theme-gray: #C4C4C4;
+  --sidebar-width: 100px;
+  --toggler-size: 30px;
+}
