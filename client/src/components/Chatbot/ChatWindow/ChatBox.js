@@ -135,6 +135,7 @@ class MessageList extends React.Component {
     return null;
   };
   render() {
+    let currentMessageItem = this.props.current_message;
     return (
       <div className={"chatApp__convTimeline"} id={"chatApp__convTimeline"}>
         {this.props.messages.slice(0).map((messageItem) => (
@@ -146,9 +147,23 @@ class MessageList extends React.Component {
             senderAvatar={messageItem.senderAvatar}
             message={messageItem.message}
             options={messageItem.options}
-            addNewInitialMessage = {this.props.addNewInitialMessage}
+            currentMessage={false}
           />
         ))}
+        {
+          (currentMessageItem && currentMessageItem.hasOwnProperty('id')) && 
+            <MessageItem
+              key={currentMessageItem.id}
+              owner={this.props.owner}
+              ownerAvatar={this.props.ownerAvatar}
+              sender={currentMessageItem.sender}
+              senderAvatar={currentMessageItem.senderAvatar}
+              message={currentMessageItem.message}
+              options={currentMessageItem.options}
+              currentMessage={true}
+          /> 
+        }
+        
       </div>
     );
   }
@@ -169,7 +184,7 @@ class MessageItem extends React.Component {
     this.setState({ recruiterIsTyping: !this.state.recruiterIsTyping });
   };
   getMessageForRecruiter = (message) => {
-    if (this.state.recruiterIsTyping) {
+    if (this.state.recruiterIsTyping && this.props.currentMessage) {
       setTimeout(this.toggleRecruiterTypingStatus, 2000);
       return (
         <div className="custom_typing_indicator">
@@ -203,9 +218,48 @@ class MessageItem extends React.Component {
     });
     return optionsBtn;
   };
-
+  getMessageAndOptionsForRecruiter = () => {
+    if (this.state.recruiterIsTyping && this.props.currentMessage) {
+      setTimeout(this.toggleRecruiterTypingStatus, 2000);
+      return (
+        <div className="custom_typing_indicator">
+          <div className="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      );
+    } else{
+      return (
+        <div className="messageAndOptionsDiv">
+          <div
+            className="chatApp__convMessageValue"
+            dangerouslySetInnerHTML={{ __html: this.props.message }}
+          />
+          <div className="option_btn_div">{this.getOptionsBtn()}</div>
+        </div>
+      );
+    }
+  }
+  getOnlyOptionsForRecruiter = () => {
+    if (this.state.recruiterIsTyping && this.props.currentMessage) {
+      setTimeout(this.toggleRecruiterTypingStatus, 2000);
+      return (
+        <div className="custom_typing_indicator">
+          <div className="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      );
+    } else{
+      return <div className="option_btn_div">{this.getOptionsBtn()}</div>;
+    }
+  }
   getMessageFromRecruiter = () => {
-    if (this.props.message.length > 0 && this.props.options?.length > 0) {
+    if (this.props.message?.length > 0 && this.props.options?.length > 0) {
       //show both
       return (
         <div>
@@ -214,19 +268,31 @@ class MessageItem extends React.Component {
             alt={this.props.sender}
             isAvailable={true}
           />
-          <div
-            className="chatApp__convMessageValue"
-            dangerouslySetInnerHTML={{ __html: this.props.message }}
-          ></div>
-          {/* Show options also here */}
-          <div className="option_btn_div">{this.getOptionsBtn()}</div>
+          
+
+          {this.props.sender === "Recruiter" ? (
+            this.getMessageAndOptionsForRecruiter()
+          ) : (
+            <>
+              <div
+                className="chatApp__convMessageValue"
+                dangerouslySetInnerHTML={{ __html: this.props.message }}
+              ></div>
+              {/* Show options also here */}
+              <div className="option_btn_div">{this.getOptionsBtn()}</div>  
+            </>
+          )}
         </div>
       );
     } else if (this.props.options?.length > 0) {
       return (
         <div>
-          {/* Show optionsa also here */}
-          <div className="option_btn_div">{this.getOptionsBtn()}</div>
+          {/* Show options also here */}
+          {this.props.sender === "Recruiter" ? (
+            this.getOnlyOptionsForRecruiter(this.props.message)
+          ) : (
+            <div className="option_btn_div">{this.getOptionsBtn()}</div>
+          )}
         </div>
       );
     } else {
@@ -293,7 +359,7 @@ class ChatBox extends React.Component {
           owner={this.props.owner}
           messages={this.props.messages}
           ownerAvatar={this.props.ownerAvatar}
-          addNewInitialMessage = {this.props.addNewInitialMessage}
+          current_message = {this.props.current_message}
         />
         <div className={"chatApp__convSendMessage clearfix"}>
           <TypingIndicator

@@ -184,6 +184,7 @@
 }
 .chatApp__convSendMessage {
 	padding: 1rem;
+	margin-top: 5px;
 }
 .chatApp__convInput {
 	float: left;
@@ -422,4 +423,14 @@
 		  transform: scale(1.05);
 		}
 	  }
+}
+
+.messageAndOptionsDiv{
+	display: flex;
+    flex-direction: column;
+    text-align: left;
+	.option_btn_div{
+		margin-top: 8px;
+		margin-left: 8px;
+	}
 }

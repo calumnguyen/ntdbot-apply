@@ -20,12 +20,14 @@ class ChatRoom extends React.Component {
 			senderAvatar: senderAvatar,
 			message: "Yes"
 		};
-		let messages = [...this.state.messages]
-		messages.pop()
-		//this.typing("Something");
-		//this.resetTyping(this.ownerInput.value);
-
-		this.setState({ messages: [...messages, newMessageItem] });
+		let messageReply = {
+			id: this.state.messages.length + 1,
+			sender: this.state.initial_messages[0].sender,
+			senderAvatar: this.state.initial_messages[0].senderAvatar,
+			message: "I'm working on next steps, see you tomorrow"
+		};
+		this.setNewUserMessage(newMessageItem);
+		setTimeout(() => this.setNewRecruiterMessage(messageReply),2000);
 		this.resetTyping(sender);
 	}
 
@@ -36,32 +38,61 @@ class ChatRoom extends React.Component {
 			senderAvatar: senderAvatar,
 			message: "No"
 		};
-		let messages = [...this.state.messages]
-		messages.pop()
-		this.setState({ messages: [...messages, newMessageItem] });
+		let messageReply = {
+			id: this.state.messages.length + 1,
+			sender: this.state.initial_messages[0].sender,
+			senderAvatar: this.state.initial_messages[0].senderAvatar,
+			message: "I'm working on next steps, see you tomorrow"
+		};
+		this.setNewUserMessage(newMessageItem);
+		setTimeout(() => this.setNewRecruiterMessage(messageReply),2000);
 		this.resetTyping(sender);
 	}
-	componentDidMount(){
-		if (this.state.current_initial_message<this.state.intitial_messages.length){
-			let initial_messages = [...this.state.intitial_messages]
-			let messages = [...this.state.messages]
-			messages.push(initial_messages[this.state.current_initial_message]);
-			this.setState({ messages: [...messages], current_initial_message:this.state.current_initial_message+1 });
+	setNewRecruiterMessage = (newMessageItem) => {		
+		this.setState({
+			current_message: newMessageItem
+		})
+	}
+	setNewUserMessage = (newMessageItem) => {
+		let messages = [...this.state.messages]
+		if(this.state.current_message && this.state.current_message.hasOwnProperty('id'))
+			messages.push(this.state.current_message);
+		this.setState({ messages: [...messages, newMessageItem], current_message: null });
+	}
+	setNewInitialMessage = () => {
+		let messages = [...this.state.messages]
+		if(this.state.current_message && this.state.current_message.hasOwnProperty('id'))
+			messages.push(this.state.current_message);
+		
+		let currentInitialMessageIdx = this.state.current_initial_message;
+		if(currentInitialMessageIdx<this.state.initial_messages.length){
+			this.setState({
+				messages: messages,
+				current_message: this.state.initial_messages[currentInitialMessageIdx],
+				current_initial_message:currentInitialMessageIdx+1
+			})
 		}
 	}
+	componentDidMount(){
+		this.addTimeMessageInterval = setInterval(this.setNewInitialMessage, 2000);
+	}
+	componentWillUnmount() {
+		clearInterval(this.addTimeMessageInterval);
+	}
 	addNewInitialMessage = () => {
-		if (this.state.current_initial_message<this.state.intitial_messages.length){
-			let initial_messages = [...this.state.intitial_messages]
-			let messages = [...this.state.messages]
-			messages.push(initial_messages[this.state.current_initial_message]);
-			this.setState({ messages: [...messages], current_initial_message:this.state.current_initial_message+1 });
+		if (this.state.current_initial_message<this.state.initial_messages.length){
+			let initial_messages = [...this.state.initial_messages]
+			this.setState({ 
+				messages: [...this.state.messages,initial_messages[this.state.current_initial_message]],
+				current_initial_message:this.state.current_initial_message+1 
+			});
 		}
 	}
 	constructor(props, context) {
 		super(props);
 		this.state = {
 			current_initial_message: 0,
-			intitial_messages: [
+			initial_messages: [
 				{
 					id: 1,
 					sender: 'Recruiter',
@@ -74,13 +105,6 @@ class ChatRoom extends React.Component {
 					sender: 'Recruiter',
 					senderAvatar: 'https://i.pravatar.cc/150?img=56',
 					message: 'To get started, are you trying to resume an application that you have started within the past 30 days?',
-					time: new Date()
-				},
-				{
-					id: 3,
-					sender: 'Recruiter',
-					senderAvatar: 'https://i.pravatar.cc/150?img=56',
-					message: '',
 					time: new Date(),
 					options: [
 						{
@@ -95,7 +119,27 @@ class ChatRoom extends React.Component {
 						}
 					]
 				},
+				// {
+				// 	id: 3,
+				// 	sender: 'Recruiter',
+				// 	senderAvatar: 'https://i.pravatar.cc/150?img=56',
+				// 	message: '',
+				// 	time: new Date(),
+				// 	options: [
+				// 		{
+				// 			display_name: "Yes",
+				// 			slug: "initial_msg_yesbtn",
+				// 			action: this.initial_msg_yesbtn
+				// 		},
+				// 		{
+				// 			display_name: "No",
+				// 			slug: "initial_msg_yesbtn",
+				// 			action: this.initial_msg_nobtn
+				// 		}
+				// 	]
+				// },
 			],
+			current_message: {},
 			messages: [],
 			isTyping: [],
 		};
@@ -156,7 +200,7 @@ class ChatRoom extends React.Component {
                 resetTyping={resetTyping}
                 messages={messages}
                 isTyping={isTyping}
-				addNewInitialMessage = {this.addNewInitialMessage}
+				current_message = {this.state.current_message}
             />
         );
 		return (
