@@ -150,20 +150,18 @@ class MessageList extends React.Component {
             currentMessage={false}
           />
         ))}
-        {
-          (currentMessageItem && currentMessageItem.hasOwnProperty('id')) && 
-            <MessageItem
-              key={currentMessageItem.id}
-              owner={this.props.owner}
-              ownerAvatar={this.props.ownerAvatar}
-              sender={currentMessageItem.sender}
-              senderAvatar={currentMessageItem.senderAvatar}
-              message={currentMessageItem.message}
-              options={currentMessageItem.options}
-              currentMessage={true}
-          /> 
-        }
-        
+        {currentMessageItem && currentMessageItem.hasOwnProperty("id") && (
+          <MessageItem
+            key={currentMessageItem.id}
+            owner={this.props.owner}
+            ownerAvatar={this.props.ownerAvatar}
+            sender={currentMessageItem.sender}
+            senderAvatar={currentMessageItem.senderAvatar}
+            message={currentMessageItem.message}
+            options={currentMessageItem.options}
+            currentMessage={true}
+          />
+        )}
       </div>
     );
   }
@@ -195,13 +193,13 @@ class MessageItem extends React.Component {
           </div>
         </div>
       );
-    } else{
+    } else {
       return (
         <div
           className="chatApp__convMessageValue"
           dangerouslySetInnerHTML={{ __html: this.props.message }}
         />
-      );  
+      );
     }
   };
   getOptionsBtn = () => {
@@ -230,7 +228,7 @@ class MessageItem extends React.Component {
           </div>
         </div>
       );
-    } else{
+    } else {
       return (
         <div className="messageAndOptionsDiv">
           <div
@@ -241,7 +239,7 @@ class MessageItem extends React.Component {
         </div>
       );
     }
-  }
+  };
   getOnlyOptionsForRecruiter = () => {
     if (this.state.recruiterIsTyping && this.props.currentMessage) {
       setTimeout(this.toggleRecruiterTypingStatus, 2000);
@@ -254,10 +252,10 @@ class MessageItem extends React.Component {
           </div>
         </div>
       );
-    } else{
+    } else {
       return <div className="option_btn_div">{this.getOptionsBtn()}</div>;
     }
-  }
+  };
   getMessageFromRecruiter = () => {
     if (this.props.message?.length > 0 && this.props.options?.length > 0) {
       //show both
@@ -268,7 +266,6 @@ class MessageItem extends React.Component {
             alt={this.props.sender}
             isAvailable={true}
           />
-          
 
           {this.props.sender === "Recruiter" ? (
             this.getMessageAndOptionsForRecruiter()
@@ -279,7 +276,7 @@ class MessageItem extends React.Component {
                 dangerouslySetInnerHTML={{ __html: this.props.message }}
               ></div>
               {/* Show options also here */}
-              <div className="option_btn_div">{this.getOptionsBtn()}</div>  
+              <div className="option_btn_div">{this.getOptionsBtn()}</div>
             </>
           )}
         </div>
@@ -341,7 +338,6 @@ class ChatBox extends React.Component {
     super(props);
     this.state = {
       isLoading: false,
-      showInputBox: false
     };
     this.sendMessageLoading = this.sendMessageLoading.bind(this);
   }
@@ -353,11 +349,6 @@ class ChatBox extends React.Component {
       this.setState({ isLoading: false });
     }, 400);
   }
-  toggleInputBox = () => {
-    this.setState({
-      showInputBox : !this.state.showInputBox
-    })
-  }
   render() {
     return (
       <div className={"chatApp__conv"}>
@@ -365,26 +356,26 @@ class ChatBox extends React.Component {
           owner={this.props.owner}
           messages={this.props.messages}
           ownerAvatar={this.props.ownerAvatar}
-          current_message = {this.props.current_message}
-          toggleInputBox = {this.toggleInputBox}
+          current_message={this.props.current_message}
         />
         <div className={"chatApp__convSendMessage clearfix"}>
           <TypingIndicator
             owner={this.props.owner}
             isTyping={this.props.isTyping}
           />
-          {
-            this.props.current_message && this.props.current_message.hasOwnProperty('id') && this.props.current_message?.requireInput && 
-            <InputMessage
-              isLoading={this.state.isLoading}
-              owner={this.props.owner}
-              ownerAvatar={this.props.ownerAvatar}
-              sendMessage={this.props.sendMessage}
-              sendMessageLoading={this.sendMessageLoading}
-              typing={this.props.typing}
-              resetTyping={this.props.resetTyping}
-            />
-          }
+          {this.props.current_message &&
+            this.props.current_message.hasOwnProperty("id") &&
+            this.props.current_message?.requireInput && (
+              <InputMessage
+                isLoading={this.state.isLoading}
+                owner={this.props.owner}
+                ownerAvatar={this.props.ownerAvatar}
+                sendMessage={this.props.sendMessage}
+                sendMessageLoading={this.sendMessageLoading}
+                typing={this.props.typing}
+                resetTyping={this.props.resetTyping}
+              />
+            )}
         </div>
       </div>
     );
