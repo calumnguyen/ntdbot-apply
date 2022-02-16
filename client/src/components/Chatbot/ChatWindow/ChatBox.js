@@ -1,5 +1,10 @@
 import React from "react";
 import ImageBox from "./ImageBox";
+
+
+import moment from "moment";
+import { TimeFormatForChatBot } from "../../../utils/constants";
+
 /* ========== */
 /* InputMessage component - used to type the message */
 
@@ -195,10 +200,10 @@ class MessageItem extends React.Component {
       );
     } else {
       return (
-        <div
-          className="chatApp__convMessageValue"
-          dangerouslySetInnerHTML={{ __html: this.props.message }}
-        />
+        <>
+          <div className="chatApp__convMessageValue" dangerouslySetInnerHTML={{ __html: this.props.message }}/>
+        {/* <span className="timeSpan">{moment(this.props.message.time).format(TimeFormatForChatBot)}</span> */}
+        </>
       );
     }
   };

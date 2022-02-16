@@ -36,13 +36,15 @@ class ChatRoom extends React.Component {
 			id: this.state.messages.length + 1,
 			sender: sender,
 			senderAvatar: senderAvatar,
-			message: "No"
+			message: "No",
+			time: new Date(),
 		};
 		let messageReply = {
 			id: this.state.messages.length + 1,
 			sender: this.state.initial_messages[0].sender,
 			senderAvatar: this.state.initial_messages[0].senderAvatar,
-			message: "I'm working on next steps, see you tomorrow"
+			message: "I'm working on next steps, see you tomorrow",
+			time: new Date(),
 		};
 		this.setNewUserMessage(newMessageItem);
 		setTimeout(() => this.setNewRecruiterMessage(messageReply),2000);
@@ -157,7 +159,8 @@ class ChatRoom extends React.Component {
 				id: this.state.messages.length + 1,
 				sender: sender,
 				senderAvatar: senderAvatar,
-				message: messageFormat
+				message: messageFormat,
+				time: new Date(),
 			};
 			this.setState({ messages: [...this.state.messages, newMessageItem] });
 			this.resetTyping(sender);
