@@ -34,3 +34,22 @@
     background-color: var(--theme-black);
   }
 }
+
+@media only screen and (max-width: 767px){
+  .Header{
+    padding: 35px 20px 10px 20px;
+  }
+  .Header .title{
+      flex-direction: column;
+      font-size: 30px;
+      .secondary_title{
+        font-size: 10px;
+      }
+      .title_tagline{
+        font-size: 15px;
+      }
+      .outer {
+        display: none;
+      }
+  }
+}
