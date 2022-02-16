@@ -153,6 +153,7 @@ class MessageList extends React.Component {
             message={messageItem.message}
             options={messageItem.options}
             currentMessage={false}
+            optionsSeen={messageItem.optionsSeen}
           />
         ))}
         {currentMessageItem && currentMessageItem.hasOwnProperty("id") && (
@@ -165,6 +166,7 @@ class MessageList extends React.Component {
             message={currentMessageItem.message}
             options={currentMessageItem.options}
             currentMessage={true}
+            optionsSeen={currentMessageItem.optionsSeen}
           />
         )}
       </div>
@@ -209,16 +211,19 @@ class MessageItem extends React.Component {
   };
   getOptionsBtn = () => {
     let optionsBtn = [];
-    this.props.options.forEach((item, idx) => {
-      optionsBtn.push(
-        <button
-          className="btn btn-primary option_btn"
-          onClick={() => item.action(this.props.owner, this.props.ownerAvatar)}
-        >
-          {item.display_name}
-        </button>
-      );
-    });
+    if(this.props?.optionsSeen===false){
+      this.props.options.forEach((item, idx) => {
+        optionsBtn.push(
+          <button
+            className="btn btn-primary option_btn"
+            onClick={() => item.action(this.props.owner, this.props.ownerAvatar)}
+          >
+            {item.display_name}
+          </button>
+        );
+      });
+    }
+    
     return optionsBtn;
   };
   getMessageAndOptionsForRecruiter = () => {

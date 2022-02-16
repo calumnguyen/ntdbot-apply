@@ -32,9 +32,10 @@ class ChatRoom extends React.Component {
 				{
 					display_name: "Start a new application",
 					slug: "start_new_applicationbtn",
-					action: () => alert("Start New Application")
+					action: () => alert("Start New Application"),
 				}
 			],
+			optionsSeen: false,
 		};
 		this.setNewUserMessage(newMessageItem);
 		setTimeout(() => this.setNewRecruiterMessage(messageReply),2000);
@@ -123,7 +124,7 @@ class ChatRoom extends React.Component {
 						{
 							display_name: "Yes",
 							slug: "initial_msg_yesbtn",
-							action: this.initial_msg_yesbtn
+							action: this.initial_msg_yesbtn,
 						},
 						{
 							display_name: "No",
@@ -131,6 +132,7 @@ class ChatRoom extends React.Component {
 							action: this.initial_msg_nobtn
 						}
 					],
+					optionsSeen: false,
 					requireInput: false
 				},
 				// {
