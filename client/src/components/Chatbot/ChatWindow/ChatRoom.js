@@ -74,7 +74,8 @@ class ChatRoom extends React.Component {
 		}
 	}
 	componentDidMount(){
-		this.addTimeMessageInterval = setInterval(this.setNewInitialMessage, 2000);
+		this.setNewInitialMessage()
+		this.addTimeMessageInterval = setInterval(this.setNewInitialMessage, 4000);
 	}
 	componentWillUnmount() {
 		clearInterval(this.addTimeMessageInterval);
