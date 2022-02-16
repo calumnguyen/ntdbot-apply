@@ -341,6 +341,7 @@ class ChatBox extends React.Component {
     super(props);
     this.state = {
       isLoading: false,
+      showInputBox: false
     };
     this.sendMessageLoading = this.sendMessageLoading.bind(this);
   }
@@ -352,6 +353,11 @@ class ChatBox extends React.Component {
       this.setState({ isLoading: false });
     }, 400);
   }
+  toggleInputBox = () => {
+    this.setState({
+      showInputBox : !this.state.showInputBox
+    })
+  }
   render() {
     return (
       <div className={"chatApp__conv"}>
@@ -360,21 +366,25 @@ class ChatBox extends React.Component {
           messages={this.props.messages}
           ownerAvatar={this.props.ownerAvatar}
           current_message = {this.props.current_message}
+          toggleInputBox = {this.toggleInputBox}
         />
         <div className={"chatApp__convSendMessage clearfix"}>
           <TypingIndicator
             owner={this.props.owner}
             isTyping={this.props.isTyping}
           />
-          <InputMessage
-            isLoading={this.state.isLoading}
-            owner={this.props.owner}
-            ownerAvatar={this.props.ownerAvatar}
-            sendMessage={this.props.sendMessage}
-            sendMessageLoading={this.sendMessageLoading}
-            typing={this.props.typing}
-            resetTyping={this.props.resetTyping}
-          />
+          {
+            this.props.current_message && this.props.current_message.hasOwnProperty('id') && this.props.current_message?.requireInput && 
+            <InputMessage
+              isLoading={this.state.isLoading}
+              owner={this.props.owner}
+              ownerAvatar={this.props.ownerAvatar}
+              sendMessage={this.props.sendMessage}
+              sendMessageLoading={this.sendMessageLoading}
+              typing={this.props.typing}
+              resetTyping={this.props.resetTyping}
+            />
+          }
         </div>
       </div>
     );

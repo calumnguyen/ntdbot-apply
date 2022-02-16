@@ -118,7 +118,8 @@ class ChatRoom extends React.Component {
 							slug: "initial_msg_yesbtn",
 							action: this.initial_msg_nobtn
 						}
-					]
+					],
+					requireInput: false
 				},
 				// {
 				// 	id: 3,

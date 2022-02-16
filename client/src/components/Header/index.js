@@ -5,9 +5,9 @@ function Header() {
   return (
     <div className="Header">
       <p className="title">
-        <p className="primary_title">Nguio Thong Dich
+        <p className="primary_title">Người Thông Dịch
 
-          <span className="secondary_title">Truyen dat trie, huong ve cong dong</span>
+          <span className="secondary_title">Truyền đạt Tri thức, hướng về Cộng đồng</span>
         </p>
         <div className="outer">
         </div>
