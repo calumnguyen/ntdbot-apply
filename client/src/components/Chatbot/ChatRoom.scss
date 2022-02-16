@@ -66,7 +66,7 @@
 .chatApp__convTitle::after {
 	content: '';
 	position: absolute;
-	background-color: #4870df;
+	background-color: var(--theme-yellow);
 	width: 100%;
 	height: 2px;
 	border-radius: 30px;
@@ -174,7 +174,7 @@
 }
 .chatApp__convMessageItem--right .chatApp__convMessageValue a:hover,
 .chatApp__convMessageItem--right .chatApp__convMessageValue a:focus {
-	color: #007dd1;
+	color: var(--theme-yellow);
 }
 .chatApp__convSendMessage {
 	position: relative;
@@ -248,10 +248,10 @@
 }
 .chatApp__convButton--loading {
 	cursor: wait;
-	background-color: #4870df;
+	background-color: var(--theme-yellow);
 }
 .chatApp__convButton--loading:hover {
-	background-color: #4870df;
+	background-color: var(--theme-yellow);
 }
 .chatApp__convButton--loading::before, .chatApp__convButton--loading::after {
 	content: '';
